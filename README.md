@@ -1,3 +1,6 @@
+This is my first React project. It is a simple calculator where you enter two numbers and perform operations.
+I have used Vite tool to build this application.
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
