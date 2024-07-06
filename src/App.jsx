@@ -2,22 +2,26 @@ import { useState, useEffect } from "react";
 import "./App.css";
 
 function Button({ digit, onClick }) {
-  let className = "stylingButton";
-  switch (digit) {
-    case '+':
-    case '-':
-    case '*':
-    case '/':
-    case '=':
-      className = "stylingButton arithmetic";
-      break;
-    case 'C':
-      className = "stylingButton clear";
-      break;
-    default:
-      className = "stylingButton";
-      break;
-  }
+  const [className, setClassName] = useState("stylingButton");
+  useEffect(
+    () => {
+      switch (digit) {
+        case "+":
+        case "-":
+        case "*":
+        case "/":
+        case "=":
+          setClassName("stylingButton arithmetic");
+          break;
+        case "C":
+          setClassName("stylingButton clear");
+          break;
+        default:
+          setClassName("stylingButton");
+          break;
+      }
+    }, [digit]
+  );
   return (
     <button className={className} value={digit} onClick={onClick}>
       {digit}
@@ -53,7 +57,7 @@ function Result({ text }) {
 }
 
 export default function App() {
-  useEffect( () => alert("Enter two numbers"), [] );
+  // useEffect( () => alert("Enter two numbers"), [] );
   const [text, setText] = useState('');
   const handleArithmetic = () => {
     const array = text.split(' ');
