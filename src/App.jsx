@@ -52,8 +52,17 @@ function Buttons({ onClick }) {
   );
 }
 
-function Result({ text }) {
-  return <input className="stylingResult" type="text" disabled={true} value={text} />;
+function Result({ text, onChange, onKeyDown }) {
+  return (
+    <input
+      className="stylingResult"
+      type="text"
+      value={text}
+      onChange={onChange}
+      onKeyDown={onKeyDown}
+      placeholder="Enter the expression"
+    />
+  );
 }
 
 export default function App() {
@@ -104,9 +113,17 @@ export default function App() {
         break;
     }
   };
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter")
+      handleArithmetic();
+  }
   return (
     <div className="calculatorShell">
-      <Result text={text} />
+      <Result
+        text={text}
+        onChange={(e) => setText(e.target.value)}
+        onKeyDown={handleKeyDown}
+      />
       <Buttons onClick={handleClick} />
     </div>
   );
