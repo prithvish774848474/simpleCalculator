@@ -1,5 +1,6 @@
-This is my first React project. It is a simple calculator where you enter two numbers and perform operations.
-I have used Vite tool to build this application.
+This is my first React project. It is a simple calculator where you enter two numbers and perform operations. <br/>
+I have used Vite tool to build this application. <br/>
+The link to the Application is https://prithvish774848474.github.io/simpleCalculator/
 
 # React + Vite
 
