@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-import "./App.css";
+import "./tailwind.css";
 
 function Button({ digit, onClick }) {
-  const [className, setClassName] = useState("stylingButton");
+  const [className, setClassName] = useState(
+    "p-2 text-black text-center text-base font-bold font-serif bg-gray-200 border-2 border-gray-400 rounded-lg outline-0 outline-offset-0 cursor-pointer hover:border-gray-600"
+  );
   useEffect(
     () => {
       switch (digit) {
@@ -11,16 +13,22 @@ function Button({ digit, onClick }) {
         case "*":
         case "/":
         case "=":
-          setClassName("stylingButton arithmetic");
+          setClassName(
+            "p-2 text-sky-700 text-center text-base font-bold font-serif bg-sky-200 border-2 border-sky-400 rounded-lg outline-0 outline-offset-0 cursor-pointer hover:border-sky-600"
+          );
           break;
         case "C":
-          setClassName("stylingButton clear");
+          setClassName(
+            "p-2 text-rose-700 text-center text-base font-bold font-serif bg-rose-200 border-2 border-rose-400 rounded-lg outline-0 outline-offset-0 cursor-pointer hover:border-rose-600"
+          );
           break;
         default:
-          setClassName("stylingButton");
+          setClassName(
+            "p-2 text-black text-center text-base font-bold font-serif bg-gray-200 border-2 border-gray-400 rounded-lg outline-0 outline-offset-0 cursor-pointer hover:border-gray-600"
+          );
           break;
       }
-    }, [digit]
+    }, []
   );
   return (
     <button className={className} value={digit} onClick={onClick}>
@@ -31,7 +39,7 @@ function Button({ digit, onClick }) {
 
 function Buttons({ onClick }) {
   return (
-    <div className="buttonContainer">
+    <div className="grid grid-cols-4 gap-2">
       <Button digit={'7'} onClick={onClick}></Button>
       <Button digit={'8'} onClick={onClick}></Button>
       <Button digit={'9'} onClick={onClick}></Button>
@@ -55,12 +63,12 @@ function Buttons({ onClick }) {
 function Result({ text, onChange, onKeyDown }) {
   return (
     <input
-      className="stylingResult"
+      className="p-2 text-sky-700 placeholder:text-sky-400 text-center text-[2rem] font-bold font-serif bg-sky-200 border-2 border-sky-400 rounded-lg outline-0 outline-offset-0 cursor-pointer"
       type="text"
       value={text}
       onChange={onChange}
       onKeyDown={onKeyDown}
-      placeholder="Enter the expression"
+      placeholder="Type Here"
     />
   );
 }
@@ -118,7 +126,7 @@ export default function App() {
       handleArithmetic();
   }
   return (
-    <div className="calculatorShell">
+    <div className="box-border flex flex-col justify-evenly items-stretch gap-8 px-4 py-12 mx-auto my-8 border-2 border-emerald-400 rounded-3xl bg-emerald-200 max-w-[90%] md:max-w-[40%]">
       <Result
         text={text}
         onChange={(e) => setText(e.target.value)}
